@@ -1,5 +1,5 @@
-resource "openstack_compute_instance_v2" "saltstack_java_centos" {
-  name            = "saltstack_java_centos"
+resource "openstack_compute_instance_v2" "Bamboo_saltstack_java_centos" {
+  name            = "Bamboo_saltstack_java_centos"
   image_id        = "195be94b-4626-45ce-b331-511691cc1a57"
   flavor_id       = "9"
   key_pair        = "centos"
@@ -7,8 +7,8 @@ resource "openstack_compute_instance_v2" "saltstack_java_centos" {
   user_data       = "${file("saltstack_java/saltstack_java_centos.sh")}"
         }
 
-resource "openstack_compute_instance_v2" "saltstack_java_ubuntu" {
-  name            = "saltstack_java_ubuntu"
+resource "openstack_compute_instance_v2" "Bamboo_saltstack_java_ubuntu" {
+  name            = "Bamboo_saltstack_java_ubuntu"
   image_id        = "b3f2ca8b-689d-4bca-921d-73d5f219d86a"
   flavor_id       = "9"
   key_pair        = "centos"
@@ -16,8 +16,8 @@ resource "openstack_compute_instance_v2" "saltstack_java_ubuntu" {
   user_data       = "${file("saltstack_java/saltstack_java_ubuntu.sh")}"
         }
 
-resource "openstack_compute_instance_v2" "saltstack_java_windows12" {
-  name            = "saltstack_java_windows12"
+resource "openstack_compute_instance_v2" "Bamboo_saltstack_java_windows12" {
+  name            = "Bamboo_saltstack_java_windows12"
   image_id        = "4471ea20-4caf-46e9-910d-85421a56426d"
   flavor_id       = "8"
   admin_pass      = "2!ppy0ps"
@@ -42,17 +42,17 @@ resource "openstack_networking_floatingip_v2" "fip_34" {
 
 resource "openstack_compute_floatingip_associate_v2" "fip_32" {
   floating_ip = "${openstack_networking_floatingip_v2.fip_32.address}"
-  instance_id = "${openstack_compute_instance_v2.saltstack_java_centos.id}"
+  instance_id = "${openstack_compute_instance_v2.Bamboo_saltstack_java_centos.id}"
         }
 
 resource "openstack_compute_floatingip_associate_v2" "fip_33" {
   floating_ip = "${openstack_networking_floatingip_v2.fip_33.address}"
-  instance_id = "${openstack_compute_instance_v2.saltstack_java_ubuntu.id}"
+  instance_id = "${openstack_compute_instance_v2.Bamboo_saltstack_java_ubuntu.id}"
         }
 
 resource "openstack_compute_floatingip_associate_v2" "fip_34" {
   floating_ip = "${openstack_networking_floatingip_v2.fip_34.address}"
-  instance_id = "${openstack_compute_instance_v2.saltstack_java_windows12.id}"
+  instance_id = "${openstack_compute_instance_v2.Bamboo_saltstack_java_windows12.id}"
         }
 
 #resource "null_resource" "Ajava" {

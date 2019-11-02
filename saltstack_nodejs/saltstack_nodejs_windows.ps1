@@ -10,11 +10,12 @@ winrm set winrm/config/service '@{AllowUnencrypted="true"}'
 tzutil /s "India Standard Time"
 winrm quickconfig -q
 Set-NetConnectionProfile -NetworkCategory private
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $url = "https://repo.saltstack.com/windows/Salt-Minion-2019.2.0-Py2-AMD64-Setup.exe"
 $output = "C:\Salt-Minion-2019.2.0-Py2-AMD64-Setup.exe"
 $start_time = Get-Date
 Invoke-WebRequest -Uri $url -OutFile $output
 Write-Output "Time taken: $((Get-Date).Subtract($start_time).Seconds) second(s)"
-Start-Process -FilePath C:\Salt-Minion-2019.2.0-Py2-AMD64-Setup.exe -ArgumentList "/S /master=10.0.0.27 /minion-name=saltstackwindowsnodejs.zippyops.com"
+Start-Process -FilePath C:\Salt-Minion-2019.2.0-Py2-AMD64-Setup.exe -ArgumentList "/S /master=10.0.0.27 /minion-name=saltstackwindowsbamboonodejs.zippyops.com"
 del C:\p
 </powershell>

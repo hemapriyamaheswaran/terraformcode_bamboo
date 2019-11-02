@@ -1,9 +1,10 @@
 #!/bin/bash
-echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzjknXyU8rT0u6nZPUwOb3Bz8xMn+v6VUBvgOXmui9M7Fc97VFDvLqp5riCel348vWD2KgVBQVOc01+0JFBQfG+NTzXMHPG57Swujsj4b2SKyA/3+/SR9+8KJi0AH6dfyOdhVyeW3D6s7rxjhElK/EF5Q19RyVNUPQ4DNLGLzq2wpBl7agg71eS8Eh2OaueqdZzGNSoN5npn21hA/CwxNhLlAkdF62JtbK/Ox2WzO91CQ0Qloy05MhS5qUd72KlImIC99Sffi9FtVFDRC2uxzPhMJXZpkLP02uEdvj5S2vFMb5kPzfzrR+DZDyVsx3n10bB5jmhedc4+KzsmGwaJhh jenkins@jenkin.zippyops.com" >> /root/.ssh/authorized_keys
+echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDkMCCQV+xKncZBunhMcw1FKBHwvLmo9Ga8UnUWIZQvV0eZ0miI9ubOgKRCijbVIEkA8+kuWaAC0MSySY/HPVOq8xf6DksKla4PPA/oDiQln3HqiKlreKmws5AJ8YFOba9fap7tsfbZMQLFpQ0vYr3vcAVPBD7+tbWz76aY65T0Wt2cm2vB8+6xEnP+yJ4pP/2DxTjXeC63LJRDHjvbMtlFBpU5Qo5VC9etKdyIZzvKkLlH/zuFd8km5RmyT7EkTgDKqjSizewBKhTR00Z5woTkUY2XaGnIhap9sAdx+yqcgn9AilYjYPb3Ee8nLRt+cY80vZgThcIwKufIykHFLULH jenkins@jenkins.zippyops.com" >> /root/.ssh/authorized_keys
+echo search zippyops.com > /etc/resolv.conf
+echo nameserver 192.168.1.5 >> /etc/resolv.conf
 echo nameserver 192.168.0.1 >> /etc/resolv.conf
-echo nameserver 192.168.1.4 >> /etc/resolv.conf
 echo 192.168.2.9 ansibletower.zippyops.com >> /etc/hosts
-sudo hostnamectl set-hostname ansibleubuntunodejs.zippyops.com
+sudo hostnamectl set-hostname bambooansibleubuntunodejs.zippyops.com
 apt-get update 
 curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 sudo setenforce 0

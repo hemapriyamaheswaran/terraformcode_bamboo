@@ -1,5 +1,5 @@
-resource "openstack_compute_instance_v2" "saltstack_php_centos" {
-  name            = "saltstack_php_centos"
+resource "openstack_compute_instance_v2" "Bamboo_saltstack_php_centos" {
+  name            = "Bamboo_saltstack_php_centos"
   image_id        = "195be94b-4626-45ce-b331-511691cc1a57"
   flavor_id       = "9"
   key_pair        = "centos"
@@ -7,8 +7,8 @@ resource "openstack_compute_instance_v2" "saltstack_php_centos" {
   user_data       = "${file("saltstack_php/saltstack_php_centos.sh")}"
         }
 
-resource "openstack_compute_instance_v2" "saltstack_php_ubuntu" {
-  name            = "saltstack_php_ubuntu"
+resource "openstack_compute_instance_v2" "Bamboo_saltstack_php_ubuntu" {
+  name            = "Bamboo_saltstack_php_ubuntu"
   image_id        = "b3f2ca8b-689d-4bca-921d-73d5f219d86a"
   flavor_id       = "9"
   key_pair        = "centos"
@@ -16,8 +16,8 @@ resource "openstack_compute_instance_v2" "saltstack_php_ubuntu" {
   user_data       = "${file("saltstack_php/saltstack_php_ubuntu.sh")}"
         }
 
-resource "openstack_compute_instance_v2" "saltstack_php_windows12" {
-  name            = "saltstack_php_windows12"
+resource "openstack_compute_instance_v2" "Bamboo_saltstack_php_windows12" {
+  name            = "Bamboo_saltstack_php_windows12"
   image_id        = "4471ea20-4caf-46e9-910d-85421a56426d"
   flavor_id       = "8"
   admin_pass      = "2!ppy0ps"
@@ -42,17 +42,17 @@ resource "openstack_networking_floatingip_v2" "fip_40" {
 
 resource "openstack_compute_floatingip_associate_v2" "fip_38" {
   floating_ip = "${openstack_networking_floatingip_v2.fip_38.address}"
-  instance_id = "${openstack_compute_instance_v2.saltstack_php_centos.id}"
+  instance_id = "${openstack_compute_instance_v2.Bamboo_saltstack_php_centos.id}"
         }
 
 resource "openstack_compute_floatingip_associate_v2" "fip_39" {
   floating_ip = "${openstack_networking_floatingip_v2.fip_39.address}"
-  instance_id = "${openstack_compute_instance_v2.saltstack_php_ubuntu.id}"
+  instance_id = "${openstack_compute_instance_v2.Bamboo_saltstack_php_ubuntu.id}"
         }
 
 resource "openstack_compute_floatingip_associate_v2" "fip_40" {
   floating_ip = "${openstack_networking_floatingip_v2.fip_40.address}"
-  instance_id = "${openstack_compute_instance_v2.saltstack_php_windows12.id}"
+  instance_id = "${openstack_compute_instance_v2.Bamboo_saltstack_php_windows12.id}"
         }
 
 #resource "null_resource" "Ajava" {

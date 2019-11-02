@@ -10,7 +10,6 @@ winrm set winrm/config/service '@{AllowUnencrypted="true"}'
 tzutil /s "India Standard Time"
 winrm quickconfig -q
 Set-NetConnectionProfile -NetworkCategory private
-Add-content -Path C:\Windows\System32\drivers\etc\hosts. -value "192.168.1.127 puppetserver.zippyops.com"
-$url = "http://downloads.puppetlabs.com/windows/puppet-agent-x64-latest.msi"
-$output = "C:\puppet-agent-x64-latest.msi"
+Add-content -Path C:\Windows\System32\drivers\etc\hosts. -value "192.168.2.10 chefserver.zippyops.com"
 </powershell>
+

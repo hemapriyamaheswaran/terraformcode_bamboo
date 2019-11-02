@@ -1,27 +1,27 @@
-resource "openstack_compute_instance_v2" "pepuppet_php_centos" {
-  name            = "pepuppet_php_centos"
+resource "openstack_compute_instance_v2" "bamboo_puppet_php_centos" {
+  name            = "Bamboo_puppet_php_centos"
   image_id        = "195be94b-4626-45ce-b331-511691cc1a57"
   flavor_id       = "9"
   key_pair        = "centos"
   security_groups = ["default","puppet-ports"]
-  user_data          = "${file("puppet_php/pepuppet_php_centos.sh")}"
+  user_data          = "${file("puppet_php/puppet_php_centos.sh")}"
         }
 
-resource "openstack_compute_instance_v2" "pepuppet_php_ubuntu" {
-  name            = "pepuppet_php_ubuntu"
+resource "openstack_compute_instance_v2" "bamboo_puppet_php_ubuntu" {
+  name            = "Bamboo_puppet_php_ubuntu"
   image_id        = "b3f2ca8b-689d-4bca-921d-73d5f219d86a"
   flavor_id       = "9"
   key_pair        = "centos"
   security_groups = ["default","puppet-ports"]
-  user_data      = "${file("puppet_php/pepuppet_php_ubuntu.sh")}"
+  user_data      = "${file("puppet_php/puppet_php_ubuntu.sh")}"
         }
 
-resource "openstack_compute_instance_v2" "pepuppet_php_windows" {
-  name            = "pepuppet_php_windows"
+resource "openstack_compute_instance_v2" "bamboo_puppet_php_windows" {
+  name            = "Bamboo_puppet_php_windows"
   image_id        = "4471ea20-4caf-46e9-910d-85421a56426d"
   flavor_id       = "8"
   security_groups = ["default","puppet-ports"]
-  user_data      = "${file("puppet_php/pepuppet_php_windows.ps1")}"
+  user_data      = "${file("puppet_php/puppet_php_windows.ps1")}"
                 }
 
   resource "openstack_networking_floatingip_v2" "fip_25" {
@@ -39,17 +39,17 @@ resource "openstack_compute_instance_v2" "pepuppet_php_windows" {
 
 resource "openstack_compute_floatingip_associate_v2" "fip_25" {
   floating_ip = "${openstack_networking_floatingip_v2.fip_25.address}"
-  instance_id = "${openstack_compute_instance_v2.pepuppet_php_centos.id}"
+  instance_id = "${openstack_compute_instance_v2.bamboo_puppet_php_centos.id}"
         }
 
 resource "openstack_compute_floatingip_associate_v2" "fip_26" {
   floating_ip = "${openstack_networking_floatingip_v2.fip_26.address}"
-  instance_id = "${openstack_compute_instance_v2.pepuppet_php_ubuntu.id}"
+  instance_id = "${openstack_compute_instance_v2.bamboo_puppet_php_ubuntu.id}"
         }
 
 resource "openstack_compute_floatingip_associate_v2" "fip_27" {
   floating_ip = "${openstack_networking_floatingip_v2.fip_27.address}"
-  instance_id = "${openstack_compute_instance_v2.pepuppet_php_windows.id}"
+  instance_id = "${openstack_compute_instance_v2.bamboo_puppet_php_windows.id}"
         }
 
 #resource "null_resource" "Pphp" {

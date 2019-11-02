@@ -1,5 +1,5 @@
-resource "openstack_compute_instance_v2" "chef_php_centos" {
-  name            = "chef_php_centos"
+resource "openstack_compute_instance_v2" "Bamboo_chef_php_centos" {
+  name            = "Bamboo_chef_php_centos"
   image_id        = "195be94b-4626-45ce-b331-511691cc1a57"
   flavor_id       = "9"
   key_pair        = "centos"
@@ -7,8 +7,8 @@ resource "openstack_compute_instance_v2" "chef_php_centos" {
   user_data          = "${file("chef_php/chef_php_centos.sh")}"
         }
 
-resource "openstack_compute_instance_v2" "chef_php_ubuntu" {
-  name            = "chef_php_ubuntu"
+resource "openstack_compute_instance_v2" "Bamboo_chef_php_ubuntu" {
+  name            = "Bamboo_chef_php_ubuntu"
   image_id        = "b3f2ca8b-689d-4bca-921d-73d5f219d86a"
   flavor_id       = "9"
   key_pair        = "centos"
@@ -16,8 +16,8 @@ resource "openstack_compute_instance_v2" "chef_php_ubuntu" {
   user_data      = "${file("chef_php/chef_php_ubuntu.sh")}"
         }
 
-resource "openstack_compute_instance_v2" "chef_php_windows" {
-  name            = "chef_php_windows"
+resource "openstack_compute_instance_v2" "Bamboo_chef_php_windows" {
+  name            = "Bamboo_chef_php_windows"
   image_id        = "4471ea20-4caf-46e9-910d-85421a56426d"
   flavor_id       = "8"
   admin_pass      = "2!ppy0ps"
@@ -39,17 +39,17 @@ resource "openstack_compute_instance_v2" "chef_php_windows" {
 
 resource "openstack_compute_floatingip_associate_v2" "fip_16" {
   floating_ip = "${openstack_networking_floatingip_v2.fip_16.address}"
-  instance_id = "${openstack_compute_instance_v2.chef_php_centos.id}"
+  instance_id = "${openstack_compute_instance_v2.Bamboo_chef_php_centos.id}"
         }
 
 resource "openstack_compute_floatingip_associate_v2" "fip_17" {
   floating_ip = "${openstack_networking_floatingip_v2.fip_17.address}"
-  instance_id = "${openstack_compute_instance_v2.chef_php_ubuntu.id}"
+  instance_id = "${openstack_compute_instance_v2.Bamboo_chef_php_ubuntu.id}"
         }
 
 resource "openstack_compute_floatingip_associate_v2" "fip_18" {
   floating_ip = "${openstack_networking_floatingip_v2.fip_18.address}"
-  instance_id = "${openstack_compute_instance_v2.chef_php_windows.id}"
+  instance_id = "${openstack_compute_instance_v2.Bamboo_chef_php_windows.id}"
         }
 
 #resource "null_resource" "Cphp" {

@@ -1,5 +1,5 @@
-resource "openstack_compute_instance_v2" "chef_dotnet_windows" {
-  name            = "chef_dotnet_windows"
+resource "openstack_compute_instance_v2" "Bamboo_chef_dotnet_windows" {
+  name            = "Bamboo_chef_dotnet_windows"
   image_id        = "4471ea20-4caf-46e9-910d-85421a56426d"
   flavor_id       = "8"
   admin_pass      = "2!ppy0ps"
@@ -15,7 +15,7 @@ resource "openstack_compute_instance_v2" "chef_dotnet_windows" {
 
 resource "openstack_compute_floatingip_associate_v2" "fip_30" {
   floating_ip = "${openstack_networking_floatingip_v2.fip_30.address}"
-  instance_id = "${openstack_compute_instance_v2.chef_dotnet_windows.id}"
+  instance_id = "${openstack_compute_instance_v2.Bamboo_chef_dotnet_windows.id}"
 }
 
 resource "local_file" "Chef_dotnet_windows_ip" {

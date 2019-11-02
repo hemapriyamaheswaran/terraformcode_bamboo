@@ -1,13 +1,13 @@
-resource "openstack_compute_instance_v2" "puppet_nodejs_centos" {
- name            = "puppet_nodejs_centos"
+resource "openstack_compute_instance_v2" "bamboo_puppet_nodejs_centos" {
+ name            = "Bamboo_puppet_nodejs_centos"
  image_id        = "195be94b-4626-45ce-b331-511691cc1a57"
  flavor_id       = "9"
  key_pair        = "centos"
  security_groups = ["default","puppet-ports"]
  user_data          = "${file("puppet_nodejs/puppet_nodejs_centos.sh")}"
         }
-resource "openstack_compute_instance_v2" "puppet_nodejs_ubuntu" {
- name            = "puppet_nodejs_ubuntu"
+resource "openstack_compute_instance_v2" "bamboo_puppet_nodejs_ubuntu" {
+ name            = "Bamboo_puppet_nodejs_ubuntu"
  image_id        = "b3f2ca8b-689d-4bca-921d-73d5f219d86a"
  flavor_id       = "9"
  key_pair        = "centos"
@@ -15,8 +15,8 @@ resource "openstack_compute_instance_v2" "puppet_nodejs_ubuntu" {
  user_data          = "${file("puppet_nodejs/puppet_nodejs_ubuntu.sh")}"
         }
 
-resource "openstack_compute_instance_v2" "puppet_nodejs_windows" {
- name            = "puppet_nodejs_windows"
+resource "openstack_compute_instance_v2" "bamboo_puppet_nodejs_windows" {
+ name            = "Bamboo_puppet_nodejs_windows"
  image_id        = "4471ea20-4caf-46e9-910d-85421a56426d"
  flavor_id       = "8"
  admin_pass      = "2!ppy0ps"
@@ -38,17 +38,17 @@ resource "openstack_compute_instance_v2" "puppet_nodejs_windows" {
 
 resource "openstack_compute_floatingip_associate_v2" "fip_22" {
   floating_ip = "${openstack_networking_floatingip_v2.fip_22.address}"
-  instance_id = "${openstack_compute_instance_v2.puppet_nodejs_centos.id}"
+  instance_id = "${openstack_compute_instance_v2.bamboo_puppet_nodejs_centos.id}"
         }
 
 resource "openstack_compute_floatingip_associate_v2" "fip_23" {
   floating_ip = "${openstack_networking_floatingip_v2.fip_23.address}"
-  instance_id = "${openstack_compute_instance_v2.puppet_nodejs_ubuntu.id}"
+  instance_id = "${openstack_compute_instance_v2.bamboo_puppet_nodejs_ubuntu.id}"
         }
 
 resource "openstack_compute_floatingip_associate_v2" "fip_24" {
   floating_ip = "${openstack_networking_floatingip_v2.fip_24.address}"
-  instance_id = "${openstack_compute_instance_v2.puppet_nodejs_windows.id}"
+  instance_id = "${openstack_compute_instance_v2.bamboo_puppet_nodejs_windows.id}"
         }
 
 #resource "null_resource" "Pnodejs" {

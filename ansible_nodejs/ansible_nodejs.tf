@@ -1,5 +1,5 @@
-resource "openstack_compute_instance_v2" "Ansible_nodejs_centos" {
-  name            = "Ansible_nodejs_centos"
+resource "openstack_compute_instance_v2" "Bamboo_Ansible_nodejs_centos" {
+  name            = "Bamboo_Ansible_nodejs_centos"
   image_id        = "195be94b-4626-45ce-b331-511691cc1a57"
   flavor_id       = "9"
   key_pair        = "centos"
@@ -7,16 +7,16 @@ resource "openstack_compute_instance_v2" "Ansible_nodejs_centos" {
   user_data       = "${file("ansible_nodejs/ansible_nodejs_centos.sh")}"
         }
 
-resource "openstack_compute_instance_v2" "Ansible_nodejs_ubuntu" {
-  name            = "Ansible_nodejs_ubuntu"
+resource "openstack_compute_instance_v2" "Bamboo_Ansible_nodejs_ubuntu" {
+  name            = "Bamboo_Ansible_nodejs_ubuntu"
   image_id        = "b3f2ca8b-689d-4bca-921d-73d5f219d86a"
   flavor_id       = "9"
   key_pair        = "centos"
   security_groups = ["default","Ansible"]
   user_data       = "${file("ansible_nodejs/ansible_nodejs_ubuntu.sh")}"
         }
-resource "openstack_compute_instance_v2" "Ansible_nodejs_windows12" {
-  name            = "Ansible_nodejs_windows12"
+resource "openstack_compute_instance_v2" "Bamboo_Ansible_nodejs_windows12" {
+  name            = "Bamboo_Ansible_nodejs_windows12"
   image_id        = "4471ea20-4caf-46e9-910d-85421a56426d"
   flavor_id       = "8"
   admin_pass      = "2!ppy0ps"
@@ -39,17 +39,17 @@ resource "openstack_networking_floatingip_v2" "fip_6" {
 
 resource "openstack_compute_floatingip_associate_v2" "fip_4" {
   floating_ip = "${openstack_networking_floatingip_v2.fip_4.address}"
-  instance_id = "${openstack_compute_instance_v2.Ansible_nodejs_centos.id}"
+  instance_id = "${openstack_compute_instance_v2.Bamboo_Ansible_nodejs_centos.id}"
         }
 
 resource "openstack_compute_floatingip_associate_v2" "fip_5" {
   floating_ip = "${openstack_networking_floatingip_v2.fip_5.address}"
-  instance_id = "${openstack_compute_instance_v2.Ansible_nodejs_ubuntu.id}"
+  instance_id = "${openstack_compute_instance_v2.Bamboo_Ansible_nodejs_ubuntu.id}"
         }
 
 resource "openstack_compute_floatingip_associate_v2" "fip_6" {
   floating_ip = "${openstack_networking_floatingip_v2.fip_6.address}"
-  instance_id = "${openstack_compute_instance_v2.Ansible_nodejs_windows12.id}"
+  instance_id = "${openstack_compute_instance_v2.Bamboo_Ansible_nodejs_windows12.id}"
         }
 
 #resource "null_resource" "Anodejs" {
